@@ -14,7 +14,7 @@ nozzle_diameter = 0.4;
 
 // How much extra space so the dices are not packed too hard.
 // For example 12mm die * <extra_space> = 12 * 1.05 = 12.6 mm.
-extra_space = 1.05;     
+extra_space = 1.05;
 
 // Wall thickness in millimeters.
 wall_thickness = 4 * nozzle_diameter;
@@ -44,18 +44,18 @@ module box() {
         difference() {
             // Base and sides
             cube([outer_width, outer_width, outer_height], center=true);
-            
+
             // Cut out insides
             translate([0, 0, wall_thickness]) {
                 cube([inner_width, inner_width, outer_height], center=true);
             }
-            
+
             // Cut out hole and grooves for lid
             lid_groove_height = (inner_height * extra_space)/2;
             translate([0, -wall_thickness, lid_groove_height]) {
                 cube([lid_width, lid_width+2*wall_thickness, wall_thickness], center=true);
             }
-        } 
+        }
     }
 }
 
